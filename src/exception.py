@@ -1,5 +1,5 @@
 import sys
-import logging
+from src.logger import logging
 
 def error_message_detail(error,error_detail:sys):
     _,_,exc_tb = error_detail.exc_info()
@@ -8,8 +8,6 @@ def error_message_detail(error,error_detail:sys):
      file_name,exc_tb.tb_lineno,str(error))
     
     return error_message
-     
-
 
 class CustomException(Exception):
     def __init__(self,error_message,error_detail:sys):
@@ -19,11 +17,10 @@ class CustomException(Exception):
     def __str__(self):
         return self.error_message
     
-
-if __name__ == "__main__":
-
-    try :
+if __name__=="__main__":
+        
+    try: 
         a=1/0
     except Exception as e:
-        logging.info("Divide by zero error")
-        raise CustomException(e,sys)
+         logging.info("Divide by Zero")
+         raise CustomException(e,sys)
